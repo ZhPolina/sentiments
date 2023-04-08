@@ -1,0 +1,19 @@
+{% extends 'template.html' %}
+{% block content %}
+<div class="container">
+        <div style="top: 5em; left: 20em; margin-bottom: 1em">
+          <div align="center" class="border">
+             <div class="header">
+                <h2>Авторизация</h2>
+             </div>
+                <form action="{{ url_for('login') }}" method="post">
+                  <div class="msg">{{ msg }}</div>
+                    <input id="username" name="username" type="text" placeholder="Введите имя пользователя" class="textbox"/></br></br>
+                    <input id="password" name="password" type="password" placeholder="Введите пароль" class="textbox"/></br></br></br>
+                    <input type="submit" class="btn" value={{value}}></br></br>
+                </form>
+            <p class="bottom">Нет аккаунта?  <a class="bottom" href="{{url_for('register')}}"> Зарегистрируйтесь здесь</a></p>
+          </div>
+        </div>
+      </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'template.html' %}
+    
+{% block content %}
+<div class="container" id="app">
+    <header class="header text-center"> 
+        <h2>{{place[1]}}</h2>
+    </header>   
+    <img class = "place" src = "../{{full_filename}}\{{place[3]}}">
+    <div class="content-text">
+        {{place[4]}}
+    </div>
+    <section class="mood">
+        <div class="row">
+            <div class="col text-center"> 
+                <div class="mood-percentage">{{sentiments[1]}}%</div>
+                <div>Хорошо</div> 
+            </div>
+            <div class="col text-center">
+                <div class="mood-percentage">{{sentiments[2]}}%</div>
+                <div>Нормально</div> 
+            </div>
+            <div class="col text-center"> 
+                <div class="mood-percentage">{{sentiments[0]}}%</div>
+                <div>Плохо</div> 
+            </div>
+        </div>
+    </section>
+    
+    <section class="comment-section">     
+        {% for (id_places, review, username, emotion) in user_emotion %}
+        <div class="row comment"> 
+            <div class="col-md-2">
+                <img src="https://xn--n1adbdf.xn--p1ai/assets/img/no-profile.png" class="img-responsive" width="90" height="90">
+                {{username}}
+            </div>
+            <div class="col-md-8 comment-text text-left">{{review}}</div>
+        </div>
+        {% endfor %}
+
+    {% if 'loggedin' in session%}
+        {% if already_left_review %}
+            <p>Вы уже оставили комментарий.</p>
+        {% else %}
+        <section class="form-section">
+        <form class="form" action="{{ url_for('comments',variable=place[0])}}" method="POST">
+                <div class="form-group">
+                    {{username}}
+                </div>
+                <div class="form-group">
+                    <textarea type = "text" name = "comment"class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Добавить комментарий</button>
+            </form>
+        </section>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

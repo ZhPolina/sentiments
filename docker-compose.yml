@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: D:/SentimentAnalys/Dockerfile
+    ports:
+      - "8080:5000"
+    depends_on:
+      - mysql
+    environment:
+      MYSQL_DATABASE: flask
+      MYSQL_PASSWORD: 9156
+      MYSQL_HOST: mysql
+  mysql:
+    build:
+      context: .
+      dockerfile: D:/SentimentAnalys/Dockerfile1.dockerfile
+    environment:
+      MYSQL_DATABASE: flask
+      MYSQL_PASSWORD: 9156
+      MYSQL_ROOT_PASSWORD: 9156
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3307:3306"

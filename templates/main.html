@@ -1,0 +1,15 @@
+
+     {% extends 'template.html' %}
+    
+    {% block content %}
+  <div style="top: 5em; left: 20em; margin-bottom: 1em">
+    <img class = "img-cover" src="{{ background_image }}" alt="Snow" style="width:100%">
+    <div class="site-cover">
+      <h1>Спланируйте свой отдых!</h1>
+        <p>Сайт ранжирует места проведения досуга, анализируя эмоциональную окраску отзывов пользователей об объектах отдыха.</p>
+        <form method="post" action="/leisure_venues">
+        <button class="btn">Выбрать город</button>
+        </form>
+    </div>
+  </div>
+    {% endblock %}
