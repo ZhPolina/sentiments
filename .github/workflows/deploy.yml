@@ -1,1 +1,42 @@
+name: Python Application CI/CD
 
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Compose
+      uses: docker/compose-cli-action@v0.4.0
+      with:
+        compose-file: docker-compose.yml
+
+    - name: Build images and run tests
+      run: |
+        docker compose build
+        docker-compose run web python -m unittest discover -s tests -p "test_*.py"
+        docker compose down
+
+    - name: Push images to Docker Hub
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: |
+          myapp_web:latest
+          myapp_mysql:latest
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Deploy to staging environment
+      run: |
+        ssh pzheleznikova@80.249.145.150 "docker pull pzheleznikova/myapp_web:latest && docker pull pzheleznikova/myapp_mysql:latest && docker-compose -f docker-compose up -d"
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSHKEY }}
