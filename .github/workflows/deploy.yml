@@ -36,8 +36,8 @@ jobs:
         context: .
         push: true
         tags: |
-          myapp_web:latest
-          myapp_mysql:latest
+          sentimentanalys:myapp_web
+          sentimentanalys:myapp_mysql
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -49,4 +49,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          ssh pzheleznikova@80.249.145.150 "docker pull pzheleznikova/myapp_web:latest && docker pull pzheleznikova/myapp_mysql:latest && docker-compose -f docker-compose up -d"
+          ssh pzheleznikova@80.249.145.150 "docker pull pzheleznikova/sentimentanalys:myapp_web && docker pull pzheleznikova/sentimentalalys:myapp_mysql && docker-compose -f docker-compose up -d"
