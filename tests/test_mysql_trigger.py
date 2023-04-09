@@ -1,6 +1,7 @@
-import unittest
-import path
+import sys
+sys.path.append('./')
 from main import app, mysql
+import unittest
 
 class TestUpdateRatingTrigger(unittest.TestCase):
     

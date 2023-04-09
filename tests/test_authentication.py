@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-import unittest
-import path
+import sys
+sys.path.append('./')
 from main import app, mysql
+import unittest
 
 class TestLogin(unittest.TestCase):
 

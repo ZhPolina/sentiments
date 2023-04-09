@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+import sys
+sys.path.append('./')
 from flask import session
-import path
 from main import sentiment, predict_emotion
+import unittest
 
 # Проверка функции подсчета процентной доли содержания каждой эмоции среди всех комментариев по выбранному месту досуга
 class TestComments(unittest.TestCase):
