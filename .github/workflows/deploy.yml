@@ -46,8 +46,9 @@ jobs:
     - name: Deploy to staging environment
       uses: appleboy/ssh-action@master
       with:
-        host: 80.249.145.150
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.SSHKEY }}
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        KEY: ${{ secrets.SSHKEY }}
         script: |
           ssh pzheleznikova@80.249.145.150 "docker pull pzheleznikova/sentimentanalys:myapp-web && docker pull pzheleznikova/sentimentanalys:myapp-mysql && docker-compose -f docker-compose up -d"
