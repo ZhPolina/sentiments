@@ -50,4 +50,4 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: |
-          ssh root@31.184.253.48 "docker pull docker.io/pzheleznikova/sentimentanalys:myapp-web && docker pull docker.io/pzheleznikova/sentimentanalys:myapp-mysql && docker-compose -f /github/workspace/docker-compose.yml up -d"
+          ssh root@31.184.253.48 "docker pull docker.io/pzheleznikova/sentimentanalys:myapp-web && docker pull docker.io/pzheleznikova/sentimentanalys:myapp-mysql && docker-compose up -d"
