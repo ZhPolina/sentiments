@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      image: myapp-web
     ports:
       - "8080:5000"
     depends_on:
@@ -16,6 +17,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile1.dockerfile
+      image: myapp-mysql # set the desired name for the image here
     environment:
       MYSQL_DATABASE: flask
       MYSQL_PASSWORD: 9156
