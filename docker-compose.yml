@@ -22,5 +22,6 @@ services:
       MYSQL_ROOT_PASSWORD: 9156
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./tests:/tests
     ports:
       - "3307:3306"
