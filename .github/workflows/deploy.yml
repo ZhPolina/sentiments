@@ -37,6 +37,6 @@ jobs:
       with:
         host: 80.249.145.150
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        password: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           ssh pzheleznikova@80.249.145.150 "docker pull pzheleznikova/sentimentanalys:myapp-web && docker pull pzheleznikova/sentimentanalys:myapp-mysql && docker-compose -f docker-compose up -d"
