@@ -27,7 +27,7 @@ jobs:
     - name: Build images and run tests
       run: |
         docker compose build
-        docker-compose run web python -m unittest discover -s /tests -p "test_*.py"
+        docker-compose run web python -m unittest discover -p "test_*.py"
         docker compose down
 
     - name: Push images to Docker Hub
