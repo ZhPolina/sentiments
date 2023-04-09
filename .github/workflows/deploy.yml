@@ -37,8 +37,8 @@ jobs:
         context: .
         push: true
         tags: |
-          sentimentanalys:myapp-mysql
-          sentimentanalys:myapp-web
+          docker.io/pzheleznikova/sentimentanalys:myapp-mysql
+          docker.io/pzheleznikova/sentimentanalys:myapp-web
           
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
