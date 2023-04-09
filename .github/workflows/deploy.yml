@@ -31,17 +31,6 @@ jobs:
         docker-compose run web python -m unittest discover -p "test_*.py"
         docker compose down
         
-    - name: Push images to Docker Hub
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: true
-        tags: |
-          sentimentanalys:myapp-web
-          sentimentanalys:myapp-mysql
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-
 
     - name: Deploy to staging environment
       uses: appleboy/ssh-action@master
