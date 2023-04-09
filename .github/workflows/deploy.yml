@@ -36,8 +36,8 @@ jobs:
         context: .
         push: true
         tags: |
-          sentimentanalys:myapp_web
-          sentimentanalys:myapp_mysql
+          sentimentanalys:myapp-web
+          sentimentanalys:myapp-mysql
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
