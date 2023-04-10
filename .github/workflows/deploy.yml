@@ -50,5 +50,4 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: |
-          ssh root@31.184.253.48 "docker-compose pull && docker-compose up -d"
           ssh root@31.184.253.48 "cd ${GITHUB_WORKSPACE}/ZhPolina/sentiments && docker-compose pull && docker-compose up -d"
