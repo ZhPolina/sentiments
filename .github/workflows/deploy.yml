@@ -51,4 +51,4 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: |
           ssh root@31.184.253.48 "docker-compose pull && docker-compose up -d"
-          ssh root@31.184.253.48 "cd ${GITHUB_WORKSPACE} && docker-compose pull && docker-compose up -d"
+          ssh root@31.184.253.48 "cd ${GITHUB_WORKSPACE}/sentiments && docker-compose pull && docker-compose up -d"
